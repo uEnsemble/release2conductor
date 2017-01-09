@@ -1,0 +1,34 @@
+language: node_js
+
+node_js:
+  - "6"
+
+script:
+  - npm lint
+  - npm test
+
+after_success:
+  - npm build
+
+env:
+  global:
+    - BLUEMIX_ORG="uEnsemble"
+    - BLUEMIX_SPACE="dpl"
+  matrix:
+
+
+deploy:
+  - deploy:
+    provider: bluemixcloudfoundry
+    skip_cleanup: true
+    edge:
+      source: adamkingit/dpl
+      branch: master
+    manifest: manifest-us-stage.yml
+    username: $BLUEMIX_USER
+    password: $BLUEMIX_PASSWORD
+    region:   eu-gb
+    organization: $BLUEMIX_ORG
+    space: $BLUEMIX_SPACE
+    on:
+      branch: master
