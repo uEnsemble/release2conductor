@@ -27,7 +27,7 @@ deploy:
     manifest: manifest-us-stage.yml
     username: $BLUEMIX_USER
     password: $BLUEMIX_PASSWORD
-    region:   eu-gb
+    region:   us
     organization: $BLUEMIX_ORG
     space: $BLUEMIX_SPACE
     on:
