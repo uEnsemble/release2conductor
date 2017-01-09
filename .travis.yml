@@ -24,7 +24,7 @@ deploy:
     edge:
       source: adamkingit/dpl
       branch: master
-    manifest: manifest-us-stage.yml
+    manifest: manifest-us-prod.yml
     username: $BLUEMIX_USER
     password: $BLUEMIX_PASSWORD
     region:   us
