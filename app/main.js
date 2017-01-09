@@ -12,7 +12,7 @@ var appEnv = cfenv.getAppEnv();
 var webhookRoute = require('./webhook.js');
 
 var serverStartTime = moment();
-var PORT = appEnv.PORT || 3003;
+var PORT = appEnv.port || 3003;
 if(!appEnv.WEBHOOK_KEY)
   appEnv.WEBHOOK_KEY = 'abcdefg';
 
