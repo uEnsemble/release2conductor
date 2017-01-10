@@ -16,30 +16,15 @@ const HEADERS = {
 
 const ConductorDefaults = {
   conductor_api : process.env.CONDUCTOR_API,
-  workflow_name : process.env.WORKFLOW_NAME || 'sync_build_join2'
 };
 
 
-function mapTaskName(repo){
-  log.trace('mapTaskName --> ', repo);
-  var result;
-  if(repo){
-    if(repo.indexOf('troll') !== -1){
-      result='build1';
-    } else if(repo.indexOf('echo') !== -1){
-      result='build2';
-    }
-  }
-  log.trace('<-- mapTaskName ', result);
-  return result;
-}
-
 module.exports = function(options) {
   var opts = Object.assign({}, ConductorDefaults, options);
-  opts.task_name = mapTaskName(opts.repo);
   var output_json = {
     release_url: opts.release_url
   };
+  delete opts.release_url;
   // console.log("output_json");
   // console.dir(output_json);
 

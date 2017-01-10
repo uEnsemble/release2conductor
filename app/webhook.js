@@ -58,15 +58,17 @@ function release(req, res){
   if(req.body.action === 'published' && req.body.release) {
     var release = req.body.release;
     var repo = req.body.repository.name;
+
     log.trace(release);
     if (!release.prerelease){
       log.info('trigger conductor workflow');
       var url = release.assets[0].browser_download_url;
       var options = {
-        workflow_name: 'sync_build_join2',
-        task_name: 'build2',
+        workflow_name: req.query.workflow_name,
+        task_name: req.query.task_name,
         release_url: url,
-        repo: repo
+        repo: repo,
+        conductor_api: req.query.conductor_api
       };
       triggerConductor(options);
     }
