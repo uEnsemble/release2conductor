@@ -67,7 +67,7 @@ function release(req, res){
         task_name: 'build2',
         release_url: url,
         repo: repo
-      }
+      };
       triggerConductor(options);
     }
   } else {
