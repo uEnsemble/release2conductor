@@ -19,32 +19,30 @@ const ConductorDefaults = {
   workflow_name : process.env.WORKFLOW_NAME || 'sync_build_join2'
 };
 
-// {
-//   workflow_name: 'sync_build_join2',
-//   task_name : 'build2'
-// }
 
 function mapTaskName(repo){
+  log.trace('mapTaskName --> ', repo);
   var result;
   if(repo.indexOf('troll') !== -1){
     result='build1';
   } else if(repo.indexOf('echo') !== -1){
     result='build2';
   }
+  log.trace('mapTaskName --> ', result);
   return result;
 }
 
 module.exports = (function(options) {
   var opts = Object.assign({}, ConductorDefaults, options);
-  var ENV = process.env;
   opts.task_name = mapTaskName(opts.repo);
   var output_json = {
-    release_url: ENV.RELEASE_URL
+    release_url: opts.release_url
   };
   // console.log("output_json");
   // console.dir(output_json);
 
   //Run the tasks in a waterfall
+  log.trace('conduct ', opts);
   async.waterfall([
     workflowRunning,
     startWorkflow,

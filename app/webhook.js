@@ -9,6 +9,8 @@ var log = bunyan.createLogger({
 var express = require('express');
 var HttpStatus = require('http-status-codes');
 
+var triggerConductor = require('modules/triggerConductor.js');
+
 
 function HttpResponse(status, message) {
   this.status = status;
@@ -55,10 +57,18 @@ function release(req, res){
   var httpResponse = new HttpResponse(HttpStatus.OK, '');
   if(req.body.action === 'published' && req.body.release) {
     var release = req.body.release;
+    var repo = req.body.repository.name;
     log.trace(release);
     if (!release.prerelease){
       log.info('trigger conductor workflow');
-      //triggerConductor()
+      var url = release.assets[0].browser_download_url;
+      var options = {
+        workflow_name: 'sync_build_join2',
+        task_name: 'build2',
+        release_url: url,
+        repo: repo
+      }
+      triggerConductor(options);
     }
   } else {
     log.error('Github release event with action !== published');
