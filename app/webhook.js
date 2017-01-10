@@ -67,9 +67,11 @@ function release(req, res){
         workflow_name: req.query.workflow_name,
         task_name: req.query.task_name,
         release_url: url,
-        repo: repo,
-        conductor_api: req.query.conductor_api
+        repo: repo
       };
+      if(req.query.conductor_api){
+        options.conductor_api = req.query.conductor_api;
+      }
       triggerConductor(options);
     }
   } else {
