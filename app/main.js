@@ -25,7 +25,7 @@ function startServer(err) {
   if(err) {
     log.error(err);
   } else {
-    app.use('/deploy', webhookRoute);
+    app.use('/webhook', webhookRoute);
     app.get('/', function (req, res) {
       res.send('Server uptime: ' + moment.duration(moment().diff(serverStartTime)).humanize());
     });
