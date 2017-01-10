@@ -16,7 +16,7 @@ var PORT = appEnv.port || 3003;
 if(!appEnv.WEBHOOK_KEY)
   appEnv.WEBHOOK_KEY = 'abcdefg';
 
-log.trace('process.env===' + process.env);
+log.trace('process.env===', process.env);
 
 //Create express server & socket.io
 var app = express();
