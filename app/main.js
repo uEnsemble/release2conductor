@@ -16,6 +16,9 @@ var PORT = appEnv.port || 3003;
 if(!appEnv.WEBHOOK_KEY)
   appEnv.WEBHOOK_KEY = 'abcdefg';
 
+log.trace('CONDUCTOR_API===' + appEnv.CONDUCTOR_API);
+log.trace('conductor_api===' + appEnv.conductor_api);
+
 //Create express server & socket.io
 var app = express();
 //app.use(require('express-bunyan-logger')());
