@@ -47,6 +47,7 @@ module.exports = function(options) {
 
   //Should check with queue endpoint, but this ensures we don't miss it if it is acked
   function workflowRunning(callback){
+    log.trace("Check workflow " + opts.conductor_api + '/workflow/running/' + opts.workflow_name);
     request.get(opts.conductor_api + '/workflow/running/' + opts.workflow_name, HEADERS, (req, res) => {
       var exists;
       if(res.statusCode != HttpStatus.OK){
