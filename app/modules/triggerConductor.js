@@ -23,16 +23,18 @@ const ConductorDefaults = {
 function mapTaskName(repo){
   log.trace('mapTaskName --> ', repo);
   var result;
-  if(repo.indexOf('troll') !== -1){
-    result='build1';
-  } else if(repo.indexOf('echo') !== -1){
-    result='build2';
+  if(repo){
+    if(repo.indexOf('troll') !== -1){
+      result='build1';
+    } else if(repo.indexOf('echo') !== -1){
+      result='build2';
+    }
   }
-  log.trace('mapTaskName --> ', result);
+  log.trace('<-- mapTaskName ', result);
   return result;
 }
 
-module.exports = (function(options) {
+module.exports = function(options) {
   var opts = Object.assign({}, ConductorDefaults, options);
   opts.task_name = mapTaskName(opts.repo);
   var output_json = {
@@ -157,4 +159,4 @@ module.exports = (function(options) {
     }
   }
 
-})();
+};

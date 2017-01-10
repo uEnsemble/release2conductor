@@ -9,7 +9,7 @@ var log = bunyan.createLogger({
 var express = require('express');
 var HttpStatus = require('http-status-codes');
 
-var triggerConductor = require('modules/triggerConductor.js');
+var triggerConductor = require('./modules/triggerConductor.js');
 
 
 function HttpResponse(status, message) {
