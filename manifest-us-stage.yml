@@ -1,0 +1,10 @@
+applications:
+- path: .
+  memory: 256M
+  instances: 1
+  domain: mybluemix.net
+  name: release2conductor-stage
+  host: release2conductor-stage
+  disk_quota: 512M
+  env:
+      WEBHOOK_KEY: '{WEBHOOK_KEY}'
