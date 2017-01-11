@@ -32,6 +32,7 @@ deploy:
     space: $BLUEMIX_SPACE
     on:
       branch: master
+      
   - deploy:
     provider: bluemixcloudfoundry
     skip_cleanup: true
