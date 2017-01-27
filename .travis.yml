@@ -16,7 +16,6 @@ env:
     - BLUEMIX_SPACE="dpl"
   matrix:
 
-
 deploy:
   - deploy:
     provider: bluemixcloudfoundry
