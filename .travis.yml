@@ -12,8 +12,8 @@ after_success:
 
 env:
   global:
-    - BLUEMIX_ORG="uEnsemble"
-    - BLUEMIX_SPACE="dpl"
+    - BLUEMIX_ORG="CloudDevOps"
+    - BLUEMIX_SPACE="Jobgate"
   matrix:
 
 deploy:
