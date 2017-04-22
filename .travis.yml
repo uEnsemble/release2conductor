@@ -31,3 +31,18 @@ deploy:
     space: $BLUEMIX_SPACE
     on:
       branch: master
+      
+  - deploy:
+    provider: bluemixcloudfoundry
+    skip_cleanup: true
+    edge:
+      source: adamkingit/dpl
+      branch: master
+    manifest: manifest-us-stage.yml
+    username: $BLUEMIX_USER
+    password: $BLUEMIX_PASSWORD
+    region:   us
+    organization: $BLUEMIX_ORG
+    space: $BLUEMIX_SPACE
+    on:
+      branch: stage
